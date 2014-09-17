@@ -1,4 +1,4 @@
-geo-mapper
+Geo Mapper
 ==========
 
 Map the geolocations
