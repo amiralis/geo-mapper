@@ -10,7 +10,7 @@ def readme():
 setup(name='geomap',
       version=geomap.__version__,
       description='Generate a map of geolocations',
-      long_description=readme,
+      long_description=readme(),
       classifiers=[
           'License :: OSI Approved :: Apache Software License',
           'Programming Language :: Python :: 2.7',
@@ -30,3 +30,4 @@ setup(name='geomap',
           'matplotlib'
       ],
       include_package_data=True)
+
