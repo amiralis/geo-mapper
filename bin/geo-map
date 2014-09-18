@@ -1,0 +1,29 @@
+#!/usr/bin/env python
+
+import geomap
+
+import argparse
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description="Generate a map of geolocations")
+    parser.add_argument("input", help="input file")
+    parser.add_argument("-o", "--output", help="output file", default=None)
+    parser.add_argument("-p", "--projection", help="set the map projection", default='gall')
+    parser.add_argument("-cc", "--continent-color", help="set the continent color", default='#A0A0A0')
+    parser.add_argument("-mc", "--mapboundary-color", help="set the map boundary color", default='#f4f4f4')
+    parser.add_argument("-ms", "--marker-size", type=int, help="set the marker size", default=6)
+    parser.add_argument("-m", "--marker", help="set the marker type and color", default='ro')
+
+    args = parser.parse_args()
+
+    try:
+        m = geomap.Map(args.projection)
+        with open(args.input, 'r') as f:
+            lines = f.readlines()
+        lon = [float(line.split(',')[0].strip()) for line in lines]
+        lat = [float(line.split(',')[1].strip()) for line in lines]
+        m.add_coordinates(lon, lat)
+        m.generate_map(continents_color=args.continent_color, mapboundary_color=args.mapboundary_color,
+                       marker=args.marker, marker_size=args.marker_size, output=args.output)
+    except Exception as e:
+        print(e)
