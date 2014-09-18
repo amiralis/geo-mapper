@@ -1,6 +1,5 @@
 Geo Mapper
 ==========
-.. image:: http://travis-ci.org/amiralis/geo-mapper.png
 
 Generate a map of geolocations
 
